@@ -3,594 +3,1278 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Playlab Pricing</title>
-  <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <title>Playlab — Pricing</title>
+  <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
     :root {
-      --cyan: #00BCD4;
-      --cyan-light: #E0F7FA;
-      --cyan-dark: #00838F;
-      --pink: #E91E63;
-      --pink-light: #FCE4EC;
-      --dark: #1A1A2E;
-      --g900: #212121;
-      --g700: #616161;
-      --g500: #9E9E9E;
-      --g300: #E0E0E0;
-      --g100: #F5F5F5;
-      --white: #FFFFFF;
-      --radius: 16px;
+      --sky-50: #f0f9ff;
+      --sky-100: #e0f2fe;
+      --sky-200: #bae6fd;
+      --sky-400: #38bdf8;
+      --sky-500: #0EA5E9;
+      --sky-600: #0284c7;
+      --sky-700: #0369a1;
+      --slate-50: #f8fafc;
+      --slate-100: #f1f5f9;
+      --slate-200: #e2e8f0;
+      --slate-300: #cbd5e1;
+      --slate-400: #94a3b8;
+      --slate-500: #64748b;
+      --slate-600: #475569;
+      --slate-700: #334155;
+      --slate-800: #1e293b;
+      --slate-900: #0f172a;
+      --emerald-400: #34d399;
+      --emerald-500: #10b981;
+      --amber-400: #fbbf24;
+      --amber-500: #f59e0b;
+      --rose-500: #f43f5e;
+      --cream: #fef9f0;
+      --card-dark: #1a2332;
+      --card-dark-alt: #1e293b;
     }
-    * { margin:0; padding:0; box-sizing:border-box; }
-    body { font-family:'Lexend',sans-serif; color:var(--g900); background:var(--white); -webkit-font-smoothing:antialiased; }
 
-    /* ===== NAV ===== */
-    nav { display:flex; align-items:center; justify-content:space-between; padding:14px 48px; background:var(--white); border-bottom:1px solid var(--g300); position:sticky; top:0; z-index:100; }
-    .nav-logo { display:flex; align-items:center; text-decoration:none; }
-    .nav-logo svg { height:28px; width:auto; }
-    .nav-links { display:flex; gap:28px; align-items:center; }
-    .nav-links a { text-decoration:none; color:var(--g700); font-size:14px; font-weight:500; transition:color .2s; }
-    .nav-links a:hover { color:var(--cyan-dark); }
-    .nav-cta { background:var(--cyan)!important; color:white!important; padding:10px 24px; border-radius:8px; font-weight:600; }
-    .nav-cta:hover { background:var(--cyan-dark)!important; }
-
-    /* ===== HERO ===== */
-    .hero { text-align:center; padding:64px 24px 40px; background:linear-gradient(180deg,var(--cyan-light) 0%,var(--white) 100%); }
-    .hero-badge { display:inline-block; background:var(--cyan); color:white; font-size:11px; font-weight:600; padding:5px 14px; border-radius:20px; margin-bottom:20px; letter-spacing:.5px; text-transform:uppercase; }
-    .hero h1 { font-size:44px; font-weight:800; color:var(--dark); margin-bottom:12px; line-height:1.15; }
-    .hero p { font-size:17px; color:var(--g700); max-width:600px; margin:0 auto 36px; line-height:1.6; }
-
-    /* ===== TOGGLE ===== */
-    .toggle-container { display:flex; align-items:center; justify-content:center; gap:14px; margin-bottom:10px; }
-    .toggle-label { font-size:15px; font-weight:500; color:var(--g700); cursor:pointer; transition:color .3s; }
-    .toggle-label.active { color:var(--dark); font-weight:700; }
-    .toggle-switch { position:relative; width:52px; height:28px; background:var(--g300); border-radius:14px; cursor:pointer; transition:background .3s; }
-    .toggle-switch.active { background:var(--cyan); }
-    .toggle-switch .toggle-knob { position:absolute; top:3px; left:3px; width:22px; height:22px; background:white; border-radius:50%; transition:transform .3s ease; box-shadow:0 2px 4px rgba(0,0,0,.15); }
-    .toggle-switch.active .toggle-knob { transform:translateX(24px); }
-    .toggle-subtitle { text-align:center; font-size:13px; color:var(--g500); margin-bottom:40px; }
-    .toggle-subtitle .hl { color:var(--cyan-dark); font-weight:600; }
-
-    /* ===== PRICING CARDS ===== */
-    .pricing-section { max-width:1340px; margin:0 auto; padding:0 24px 72px; }
-
-    /* --- EDUCATION: 4-col subgrid for perfect row alignment --- */
-    .edu-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      grid-template-rows: repeat(16, auto);
-      gap: 0 24px;
+    body {
+      font-family: 'Lexend', sans-serif;
+      background: #fff;
+      color: var(--slate-800);
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
     }
-    .edu-grid .pricing-card {
-      display: grid;
-      grid-row: span 16;
-      grid-template-rows: subgrid;
-      row-gap: 0;
-      background: var(--white);
-      border: 2px solid var(--g300);
-      border-radius: var(--radius);
-      padding: 32px 24px;
+
+    /* ─── HEADER ─── */
+    .header {
+      background: linear-gradient(180deg, var(--cream) 0%, #fff 100%);
+      text-align: center;
+      padding: 48px 24px 0;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 2px;
+      margin-bottom: 24px;
+    }
+
+    .logo svg { height: 28px; }
+
+    .header h1 {
+      font-size: 36px;
+      font-weight: 700;
+      color: var(--slate-900);
+      margin-bottom: 12px;
+      letter-spacing: -0.5px;
+    }
+
+    .header p {
+      font-size: 15px;
+      font-weight: 300;
+      color: var(--slate-500);
+      max-width: 520px;
+      margin: 0 auto 36px;
+    }
+
+    /* ─── TABS ─── */
+    .tabs {
+      display: flex;
+      justify-content: center;
+      gap: 0;
+      border-bottom: 2px solid var(--slate-200);
+    }
+
+    .tab {
+      padding: 12px 32px;
+      font-family: 'Lexend', sans-serif;
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--slate-400);
+      cursor: pointer;
+      border: none;
+      background: none;
       position: relative;
-      transition: all .3s ease;
+      transition: color 0.2s;
     }
-    .edu-grid .pricing-card:hover { transform:translateY(-4px); box-shadow:0 12px 40px rgba(0,0,0,.08); }
-    .edu-grid .pricing-card.featured { border-color:var(--cyan); box-shadow:0 8px 32px rgba(0,188,212,.15); }
-    .edu-grid .pricing-card.featured:hover { box-shadow:0 16px 48px rgba(0,188,212,.2); }
 
-    /* --- ORGANIZATION: 3-col subgrid --- */
-    .org-grid {
+    .tab:hover { color: var(--slate-600); }
+
+    .tab.active {
+      color: var(--sky-600);
+      font-weight: 600;
+    }
+
+    .tab.active::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: var(--sky-500);
+      border-radius: 1px;
+    }
+
+    /* ─── TAB CONTENT ─── */
+    .tab-content { display: none; }
+    .tab-content.active { display: block; }
+
+    /* ─── CARDS GRID ─── */
+    .cards {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      grid-template-rows: repeat(11, auto);
-      gap: 0 24px;
+      gap: 16px;
+      max-width: 1080px;
+      margin: 48px auto;
+      padding: 0 24px;
     }
-    .org-grid .pricing-card {
+
+    .card {
+      background: var(--card-dark);
+      border-radius: 20px;
+      padding: 28px 22px;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .card.highlighted {
+      outline: 2px solid var(--amber-400);
+      outline-offset: -2px;
+    }
+
+    .card-icon {
+      width: 56px;
+      height: 56px;
+      margin-bottom: 20px;
+    }
+
+    .card h3 {
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .card .description {
+      font-size: 12px;
+      font-weight: 300;
+      color: var(--slate-300);
+      margin-bottom: 20px;
+    }
+
+    .card .price {
+      margin-top: auto;
+      margin-bottom: 24px;
+    }
+
+    .card .price .amount {
+      font-size: 32px;
+      font-weight: 700;
+    }
+
+    .card .price .period {
+      font-size: 14px;
+      font-weight: 300;
+      color: var(--slate-300);
+      margin-left: 4px;
+    }
+
+    .card .cta {
+      display: block;
+      width: 100%;
+      padding: 14px;
+      border-radius: 12px;
+      font-family: 'Lexend', sans-serif;
+      font-size: 15px;
+      font-weight: 600;
+      text-align: center;
+      cursor: pointer;
+      border: 2px solid rgba(255,255,255,0.3);
+      background: transparent;
+      color: #fff;
+      transition: all 0.2s;
+      text-decoration: none;
+      margin-bottom: 24px;
+    }
+
+    .cta:hover {
+      border-color: rgba(255,255,255,0.6);
+      background: rgba(255,255,255,0.05);
+    }
+
+    .cta.primary {
+      background: var(--amber-400);
+      color: var(--slate-900);
+      border-color: var(--amber-400);
+    }
+
+    .cta.primary:hover {
+      background: var(--amber-500);
+      border-color: var(--amber-500);
+    }
+
+    .card .features-label {
+      font-size: 13px;
+      font-weight: 400;
+      color: var(--slate-300);
+      margin-bottom: 16px;
+    }
+
+    .card .features-label strong {
+      color: #fff;
+      font-weight: 600;
+    }
+
+    .card .feature {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      margin-bottom: 10px;
+      font-size: 12px;
+      font-weight: 300;
+      color: var(--slate-200);
+    }
+
+    .check {
+      flex-shrink: 0;
+      width: 20px;
+      height: 20px;
+      color: var(--emerald-400);
+      margin-top: 1px;
+    }
+
+    /* ─── COMPARE PLANS ─── */
+    .compare-section {
+      max-width: 1080px;
+      margin: 0 auto 64px;
+      padding: 0 24px;
+    }
+
+    .compare-section h2 {
+      font-size: 28px;
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 36px;
+      color: var(--slate-900);
+    }
+
+    .compare-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+    }
+
+    .compare-table thead th {
+      padding: 16px 16px 12px;
+      font-weight: 600;
+      font-size: 15px;
+      color: var(--slate-800);
+      border-bottom: 2px solid var(--slate-200);
+      text-align: center;
+    }
+
+    .compare-table thead th:first-child {
+      text-align: left;
+    }
+
+    .compare-table thead .price-sub {
+      font-size: 12px;
+      font-weight: 300;
+      color: var(--slate-400);
+      display: block;
+    }
+
+    .compare-table .category-row td {
+      padding: 20px 16px 8px;
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--slate-400);
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      border-bottom: 1px solid var(--slate-100);
+    }
+
+    .compare-table tbody td {
+      padding: 12px 16px;
+      border-bottom: 1px solid var(--slate-100);
+      color: var(--slate-600);
+      text-align: center;
+      font-weight: 300;
+    }
+
+    .compare-table tbody td:first-child {
+      text-align: left;
+      color: var(--slate-700);
+      font-weight: 400;
+    }
+
+    .compare-table .check-cell {
+      color: var(--emerald-500);
+    }
+
+    .compare-table .dash-cell {
+      color: var(--slate-300);
+    }
+
+    /* ─── TIERED PRICING ─── */
+    .tiered-section {
+      max-width: 1080px;
+      margin: 0 auto 48px;
+      padding: 0 24px;
+    }
+
+    .tiered-section h3 {
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 8px;
+      color: var(--slate-900);
+    }
+
+    .tiered-section h3 em {
+      font-style: italic;
+      font-weight: 600;
+    }
+
+    .tiered-section > p {
+      font-size: 13px;
+      font-weight: 300;
+      color: var(--slate-500);
+      margin-bottom: 20px;
+      max-width: 760px;
+    }
+
+    .tier-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+      margin-bottom: 12px;
+    }
+
+    .tier-table thead th {
+      background: var(--sky-500);
+      color: #fff;
+      padding: 12px 16px;
+      font-weight: 700;
+      text-align: center;
+      font-size: 14px;
+    }
+
+    .tier-table thead th:first-child { border-radius: 10px 0 0 0; }
+    .tier-table thead th:last-child { border-radius: 0 10px 0 0; }
+
+    .tier-table tbody td {
+      padding: 12px 16px;
+      text-align: center;
+      border-bottom: 1px solid var(--slate-200);
+      font-weight: 400;
+    }
+
+    .tier-table tbody tr:nth-child(even) td { background: var(--slate-50); }
+
+    .tier-table tbody td:first-child { font-weight: 600; }
+
+    /* ─── ADD-ONS ─── */
+    .addons-section {
+      max-width: 1080px;
+      margin: 0 auto 64px;
+      padding: 0 24px;
+    }
+
+    .addons-section h3 {
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 20px;
+      color: var(--slate-900);
+    }
+
+    .addon-grid {
       display: grid;
-      grid-row: span 11;
-      grid-template-rows: subgrid;
-      row-gap: 0;
-      background: var(--white);
-      border: 2px solid var(--g300);
-      border-radius: var(--radius);
-      padding: 32px 24px;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .addon-card {
+      background: var(--slate-50);
+      border: 1px solid var(--slate-200);
+      border-radius: 16px;
+      padding: 20px;
+      transition: border-color 0.2s;
+    }
+
+    .addon-card:hover {
+      border-color: var(--sky-200);
+    }
+
+    .addon-card-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+
+    .addon-plus {
+      width: 32px;
+      height: 32px;
+      background: var(--sky-500);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .addon-plus svg {
+      width: 18px;
+      height: 18px;
+      color: #fff;
+    }
+
+    .addon-card h4 {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--slate-800);
+      line-height: 1.3;
+    }
+
+    .addon-card ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .addon-card li {
+      font-size: 12px;
+      font-weight: 300;
+      color: var(--slate-500);
+      padding: 3px 0;
+      padding-left: 14px;
       position: relative;
-      transition: all .3s ease;
     }
-    .org-grid .pricing-card:hover { transform:translateY(-4px); box-shadow:0 12px 40px rgba(0,0,0,.08); }
-    .org-grid .pricing-card.featured { border-color:var(--cyan); box-shadow:0 8px 32px rgba(0,188,212,.15); }
-    .org-grid .pricing-card.featured:hover { box-shadow:0 16px 48px rgba(0,188,212,.2); }
 
-    /* --- Shared card element styles --- */
-    .card-badge { position:absolute; top:-13px; left:50%; transform:translateX(-50%); background:var(--cyan); color:white; font-size:11px; font-weight:700; padding:4px 18px; border-radius:20px; text-transform:uppercase; letter-spacing:.5px; white-space:nowrap; }
-    .card-icon { width:44px; height:44px; border-radius:10px; display:flex; align-items:center; justify-content:center; font-size:20px; margin-bottom:12px; }
-    .card-icon.c1 { background:var(--g100); }
-    .card-icon.c2 { background:var(--cyan-light); }
-    .card-icon.c3 { background:var(--pink-light); }
-    .card-label { font-size:11px; font-weight:600; text-transform:uppercase; letter-spacing:.8px; color:var(--g500); margin-bottom:2px; line-height:1.4; }
-    .card-name { font-size:22px; font-weight:700; color:var(--dark); margin-bottom:6px; }
-    .card-desc { font-size:13px; color:var(--g700); line-height:1.5; margin-bottom:20px; }
-    .card-price { margin-bottom:6px; display:flex; align-items:baseline; flex-wrap:wrap; gap:4px; }
-    .card-price .amt { font-size:36px; font-weight:800; color:var(--dark); }
-    .card-price .cur { font-size:18px; font-weight:700; color:var(--dark); }
-    .card-price .per { font-size:13px; color:var(--g500); }
-    .card-note { font-size:12px; color:var(--g500); margin-bottom:20px; min-height:18px; }
-    .card-cta { display:block; width:100%; padding:12px; border-radius:10px; font-family:'Lexend',sans-serif; font-size:14px; font-weight:600; cursor:pointer; text-align:center; text-decoration:none; transition:all .2s; margin-bottom:20px; border:none; }
-    .card-cta.primary { background:var(--cyan); color:white; }
-    .card-cta.primary:hover { background:var(--cyan-dark); }
-    .card-cta.outline { background:var(--white); color:var(--cyan-dark); border:2px solid var(--cyan); }
-    .card-cta.outline:hover { background:var(--cyan-light); }
-    .card-cta.dark { background:var(--dark); color:white; }
-    .card-cta.dark:hover { background:#2a2a4a; }
-    .card-divider { height:1px; background:var(--g300); margin-bottom:18px; }
-    .card-stitle { font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:.8px; color:var(--g500); margin-bottom:10px; }
-    .card-list { list-style:none; margin-bottom:16px; }
-    .card-list li { display:flex; align-items:flex-start; gap:8px; font-size:13px; color:var(--g700); margin-bottom:8px; line-height:1.4; }
-    .card-list li .ck { flex-shrink:0; width:18px; height:18px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:10px; margin-top:1px; }
-    .card-list li .ck.b { background:var(--cyan-light); color:var(--cyan-dark); }
-    .card-list li .ck.c { background:var(--cyan); color:white; }
-    .card-list li .ck.p { background:var(--pink-light); color:var(--pink); }
-    .card-list li .ck.x { background:var(--g100); color:var(--g500); }
-    .card-list li.off { opacity:.4; }
-    .card-list li.off span:last-child { text-decoration:line-through; }
-    .includes-note { font-size:12px; color:var(--cyan-dark); font-weight:600; font-style:italic; margin-bottom:12px; }
-
-    /* ===== TABLES ===== */
-    .table-section { max-width:1000px; margin:0 auto; padding:0 24px 72px; }
-    .table-header { text-align:center; margin-bottom:36px; }
-    .table-header h2 { font-size:28px; font-weight:700; color:var(--dark); margin-bottom:10px; }
-    .table-header p { font-size:15px; color:var(--g700); max-width:580px; margin:0 auto; line-height:1.6; }
-    .ptable { width:100%; border-collapse:separate; border-spacing:0; border-radius:12px; overflow:hidden; box-shadow:0 4px 20px rgba(0,0,0,.06); }
-    .ptable thead th { background:var(--dark); color:white; padding:14px 20px; font-size:12px; font-weight:600; text-transform:uppercase; letter-spacing:.5px; text-align:left; }
-    .ptable thead th:not(:first-child) { text-align:center; }
-    .ptable tbody tr { transition:background .2s; }
-    .ptable tbody tr:hover { background:var(--cyan-light); }
-    .ptable tbody td { padding:14px 20px; font-size:14px; border-bottom:1px solid var(--g300); }
-    .ptable tbody td:not(:first-child) { text-align:center; }
-    .ptable tbody tr:last-child td { border-bottom:none; }
-
-    /* ===== SERVICES ===== */
-    .services-section { background:var(--g100); padding:72px 0; }
-    .services-inner { max-width:1100px; margin:0 auto; padding:0 24px; }
-    .services-header { text-align:center; margin-bottom:40px; }
-    .services-header h2 { font-size:28px; font-weight:700; color:var(--dark); margin-bottom:10px; }
-    .services-header p { font-size:15px; color:var(--g700); max-width:580px; margin:0 auto; line-height:1.6; }
-
-    /* ===== TRUST ===== */
-    .trust-section { padding:56px 24px; text-align:center; }
-    .trust-section h3 { font-size:13px; font-weight:600; color:var(--g500); text-transform:uppercase; letter-spacing:1px; margin-bottom:28px; }
-    .trust-logos { display:flex; align-items:center; justify-content:center; gap:40px; flex-wrap:wrap; opacity:.5; }
-    .trust-logo { font-size:15px; font-weight:600; color:var(--g700); }
-
-    /* ===== FAQ ===== */
-    .faq-section { max-width:760px; margin:0 auto; padding:0 24px 72px; }
-    .faq-header { text-align:center; margin-bottom:36px; }
-    .faq-header h2 { font-size:28px; font-weight:700; color:var(--dark); }
-    .faq-item { border-bottom:1px solid var(--g300); padding:18px 0; }
-    .faq-question { display:flex; align-items:center; justify-content:space-between; cursor:pointer; font-size:15px; font-weight:600; color:var(--dark); }
-    .faq-question .arrow { font-size:18px; color:var(--g500); transition:transform .3s; }
-    .faq-item.open .arrow { transform:rotate(180deg); }
-    .faq-answer { max-height:0; overflow:hidden; transition:max-height .3s ease; }
-    .faq-item.open .faq-answer { max-height:200px; }
-    .faq-answer p { padding-top:10px; font-size:14px; color:var(--g700); line-height:1.6; }
-
-    /* ===== CTA BANNER ===== */
-    .cta-banner { background:linear-gradient(135deg,var(--dark) 0%,#2a2a5a 100%); padding:56px 24px; text-align:center; }
-    .cta-banner h2 { font-size:28px; font-weight:700; color:white; margin-bottom:10px; }
-    .cta-banner p { font-size:15px; color:rgba(255,255,255,.7); margin-bottom:28px; max-width:480px; margin-left:auto; margin-right:auto; }
-    .cta-buttons { display:flex; gap:14px; justify-content:center; flex-wrap:wrap; }
-    .cta-buttons a { padding:12px 28px; border-radius:10px; font-family:'Lexend',sans-serif; font-size:14px; font-weight:600; text-decoration:none; transition:all .2s; }
-    .cta-buttons .bp { background:var(--cyan); color:white; }
-    .cta-buttons .bp:hover { background:var(--cyan-dark); }
-    .cta-buttons .bo { background:transparent; color:white; border:2px solid rgba(255,255,255,.3); }
-    .cta-buttons .bo:hover { border-color:white; }
-
-    /* ===== FOOTER ===== */
-    footer { padding:36px 48px; display:flex; align-items:center; justify-content:space-between; border-top:1px solid var(--g300); font-size:12px; color:var(--g500); }
-    footer a { color:var(--g500); text-decoration:none; }
-    footer a:hover { color:var(--cyan-dark); }
-
-    .hidden { display:none!important; }
-
-    @media (max-width:1100px) {
-      .edu-grid { grid-template-columns:repeat(2,1fr); grid-template-rows:repeat(16,auto) repeat(16,auto); }
-      .org-grid { grid-template-columns:1fr; grid-template-rows:repeat(11,auto); }
-      .org-grid .pricing-card { grid-row:span 11; }
+    .addon-card li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 10px;
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--slate-300);
     }
-    @media (max-width:700px) {
-      .edu-grid { grid-template-columns:1fr; grid-template-rows:repeat(16,auto); }
-      .edu-grid .pricing-card { grid-row:span 16; }
-      nav { padding:12px 20px; }
-      .hero h1 { font-size:32px; }
+
+    @media (max-width: 768px) {
+      .addon-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 1024px) {
+      .addon-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    /* ─── FAQS ─── */
+    .faq-section {
+      max-width: 720px;
+      margin: 0 auto 80px;
+      padding: 0 24px;
+    }
+
+    .faq-section h2 {
+      font-size: 28px;
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 32px;
+      color: var(--slate-900);
+    }
+
+    .faq {
+      border: 1px solid var(--slate-200);
+      border-radius: 12px;
+      margin-bottom: 12px;
+      overflow: hidden;
+    }
+
+    .faq summary {
+      padding: 16px 20px;
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--slate-800);
+      cursor: pointer;
+      list-style: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .faq summary::-webkit-details-marker { display: none; }
+
+    .faq summary::after {
+      content: '';
+      width: 20px;
+      height: 20px;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='%2394a3b8' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+      background-size: contain;
+      background-repeat: no-repeat;
+      transition: transform 0.2s;
+      flex-shrink: 0;
+    }
+
+    .faq[open] summary::after { transform: rotate(180deg); }
+
+    .faq .answer {
+      padding: 0 20px 16px;
+      font-size: 13px;
+      font-weight: 300;
+      color: var(--slate-500);
+      line-height: 1.6;
+    }
+
+    /* ─── BUSINESS CTA ─── */
+    .business-cta {
+      max-width: 720px;
+      margin: 64px auto;
+      padding: 48px 32px;
+      text-align: center;
+      background: var(--card-dark);
+      border-radius: 20px;
+      color: #fff;
+    }
+
+    .business-cta h3 {
+      font-size: 28px;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    .business-cta p {
+      font-size: 15px;
+      font-weight: 300;
+      color: var(--slate-300);
+      margin-bottom: 32px;
+      max-width: 480px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .business-cta .cta {
+      display: inline-block;
+      width: auto;
+      padding: 14px 48px;
+    }
+
+    /* ─── CARD GROUPS ─── */
+    .card-groups {
+      display: flex;
+      gap: 20px;
+      max-width: 1320px;
+      margin: 48px auto;
+      padding: 0 24px;
+      align-items: stretch;
+    }
+
+    .card-group {
+      border: 1.5px solid var(--slate-200);
+      border-radius: 20px;
+      padding: 20px 16px 16px;
+      position: relative;
+    }
+
+    .card-group:first-child {
+      flex: 2;
+      background: var(--sky-50);
+      border-color: var(--sky-200);
+    }
+
+    .card-group:last-child {
+      flex: 3;
+      background: #fef9f0;
+      border-color: #fde68a;
+    }
+
+    .group-label {
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--slate-500);
+      position: absolute;
+      top: -8px;
+      left: 24px;
+      padding: 0 8px;
+    }
+
+    .card-group:first-child .group-label {
+      background: var(--sky-50);
+      color: var(--sky-700);
+    }
+
+    .card-group:last-child .group-label {
+      background: #fef9f0;
+      color: #92400e;
+    }
+
+    .group-cards {
+      display: grid;
+      gap: 14px;
+    }
+
+    @media (max-width: 1100px) {
+      .card-groups { flex-direction: column; max-width: 1080px; }
+      .card-group:first-child, .card-group:last-child { flex: auto; }
+    }
+
+    @media (max-width: 768px) {
+      .group-cards { grid-template-columns: 1fr !important; }
+    }
+
+    /* ─── FOOTNOTE ─── */
+    .footnote {
+      text-align: center;
+      font-size: 12px;
+      font-weight: 300;
+      color: var(--slate-400);
+      padding: 0 24px 48px;
+      font-style: italic;
+    }
+
+    /* ─── SVG CHECK ICON ─── */
+    .svg-check {
+      display: inline-block;
+      width: 18px;
+      height: 18px;
+      color: var(--emerald-500);
+      vertical-align: middle;
+    }
+
+    .svg-dash {
+      display: inline-block;
+      width: 18px;
+      text-align: center;
+      color: var(--slate-300);
+      font-weight: 400;
+    }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 1024px) {
+      .cards[style*="repeat(4"] { grid-template-columns: repeat(2, 1fr) !important; }
+    }
+
+    @media (max-width: 768px) {
+      .header h1 { font-size: 26px; }
+      .cards { grid-template-columns: 1fr !important; max-width: 400px !important; }
+      .tab { padding: 12px 20px; font-size: 14px; }
+      .compare-table { font-size: 12px; }
+      .compare-table thead th, .compare-table tbody td { padding: 8px 8px; }
     }
   </style>
 </head>
 <body>
 
-<!-- NAV -->
-<nav>
-  <a href="#" class="nav-logo">
-    <svg viewBox="57 45 477 161" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M57 45H67.0421C78.1343 45 87.1263 53.9823 87.1263 65.0625V157.852H67.0421V65.0625H57V45Z" fill="#FFC938"/>
-      <path fill-rule="evenodd" clip-rule="evenodd" d="M102.189 65.0625L57 65.0625L57 45L102.189 45C120.214 45 134.826 59.5962 134.826 77.6016C134.826 95.6069 120.214 110.203 102.189 110.203L67.0421 110.203L67.0421 90.1406L102.189 90.1406C109.122 90.1406 114.742 84.5267 114.742 77.6016C114.742 70.6764 109.122 65.0625 102.189 65.0625Z" fill="#0FC87A" style="mix-blend-mode:multiply"/>
-      <rect x="147.379" y="45" width="20.0842" height="112.852" fill="#01B1E2"/>
-      <path fill-rule="evenodd" clip-rule="evenodd" d="M216.418 137.789C225.431 137.789 232.737 130.491 232.737 121.488C232.737 112.486 225.431 105.188 216.418 105.188C207.406 105.188 200.1 112.486 200.1 121.488C200.1 130.491 207.406 137.789 216.418 137.789ZM216.418 157.852C236.523 157.852 252.821 141.571 252.821 121.488C252.821 101.405 236.523 85.125 216.418 85.125C196.314 85.125 180.016 101.405 180.016 121.488C180.016 141.571 196.314 157.852 216.418 157.852Z" fill="#01B1E2"/>
-      <path d="M232.737 87.6328H252.821V157.852H232.737V87.6328Z" fill="#FF3B37" style="mix-blend-mode:multiply"/>
-      <path fill-rule="evenodd" clip-rule="evenodd" d="M285.458 87.6328V127.758C285.458 134.683 291.078 140.297 298.011 140.297C304.943 140.297 310.563 134.683 310.563 127.758V87.6328H330.647V127.758C330.647 145.763 316.035 160.359 298.011 160.359C279.986 160.359 265.374 145.763 265.374 127.758V87.6328H285.458Z" fill="#FF3B37"/>
-      <path fill-rule="evenodd" clip-rule="evenodd" d="M310.563 172.898V87.6328H330.647V172.898C330.647 190.904 316.035 205.5 298.011 205.5H296.755C279.424 205.5 265.374 191.465 265.374 174.152H285.458C285.458 180.385 290.516 185.438 296.755 185.438H298.011C304.943 185.438 310.563 179.824 310.563 172.898Z" fill="#01B1E2" style="mix-blend-mode:multiply"/>
-      <rect x="343.2" y="45" width="20.0842" height="112.852" fill="#01B1E2"/>
-      <path fill-rule="evenodd" clip-rule="evenodd" d="M412.239 137.789C421.252 137.789 428.558 130.491 428.558 121.488C428.558 112.486 421.252 105.188 412.239 105.188C403.227 105.188 395.921 112.486 395.921 121.488C395.921 130.491 403.227 137.789 412.239 137.789ZM412.239 157.852C432.344 157.852 448.642 141.571 448.642 121.488C448.642 101.405 432.344 85.125 412.239 85.125C392.135 85.125 375.837 101.405 375.837 121.488C375.837 141.571 392.135 157.852 412.239 157.852Z" fill="#01B1E2"/>
-      <path d="M428.558 87.6328H448.642V157.852H428.558V87.6328Z" fill="#FF3B37" style="mix-blend-mode:multiply"/>
-      <path fill-rule="evenodd" clip-rule="evenodd" d="M497.597 137.789C506.61 137.789 513.916 130.491 513.916 121.488C513.916 112.486 506.61 105.188 497.597 105.188C488.585 105.188 481.279 112.486 481.279 121.488C481.279 130.491 488.585 137.789 497.597 137.789ZM497.597 157.852C517.702 157.852 534 141.571 534 121.488C534 101.405 517.702 85.125 497.597 85.125C477.493 85.125 461.195 101.405 461.195 121.488C461.195 141.571 477.493 157.852 497.597 157.852Z" fill="#FFC938"/>
-      <path d="M461.195 45H481.279V157.852H461.195V45Z" fill="#DE39B2" style="mix-blend-mode:multiply"/>
+<!-- ─── HEADER ─── -->
+<div class="header">
+  <div class="logo">
+    <svg viewBox="0 0 120 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <text x="0" y="22" font-family="Lexend" font-weight="700" font-size="24">
+        <tspan fill="#0EA5E9">P</tspan><tspan fill="#f43f5e">l</tspan><tspan fill="#f59e0b">a</tspan><tspan fill="#0EA5E9">y</tspan><tspan fill="#10b981">l</tspan><tspan fill="#0EA5E9">a</tspan><tspan fill="#f43f5e">b</tspan>
+      </text>
     </svg>
-  </a>
-  <div class="nav-links">
-    <a href="#">Platform</a>
-    <a href="#">Solutions</a>
-    <a href="#">Resources</a>
-    <a href="#">About</a>
-    <a href="#" class="nav-cta">Get Started Free</a>
   </div>
-</nav>
+  <h1>Choose the plan that fits your context.</h1>
+  <p>As a nonprofit, Playlab is committed to expanding free access to all educators and students. Because AI usage costs money, we are also limited in what we can offer for free.</p>
 
-<!-- HERO -->
-<section class="hero">
-  <div class="hero-badge">Mission-Driven Nonprofit</div>
-  <h1>Education Pricing</h1>
-  <p id="hero-edu">For K-12 schools and higher education institutions</p>
-  <p id="hero-org" class="hidden">Flexible pricing to support every stage of AI adoption &mdash; from first experiments to organization-wide deployment.</p>
-  <div class="toggle-container">
-    <span class="toggle-label active" id="label-edu" onclick="setToggle(false)">Education</span>
-    <div class="toggle-switch" id="toggleSwitch" onclick="togglePricing()"><div class="toggle-knob"></div></div>
-    <span class="toggle-label" id="label-org" onclick="setToggle(true)">Organizations</span>
+  <!-- TABS -->
+  <div class="tabs">
+    <button class="tab active" data-tab="individual">Individual</button>
+    <button class="tab" data-tab="schools">Schools</button>
+    <button class="tab" data-tab="business">Business</button>
   </div>
-  <div class="toggle-subtitle" id="toggleSubtitle">Showing <span class="hl">Education</span> pricing</div>
-</section>
-
-<!-- ==================== EDUCATION PRICING ==================== -->
-<div id="edu-pricing">
-  <section class="pricing-section">
-    <div class="edu-grid">
-
-      <!-- PLAYING -->
-      <div class="pricing-card">
-        <div class="card-icon c1">&#x1f3ae;</div>
-        <div class="card-label">Explore AI Solutions</div>
-        <div class="card-name">Playing</div>
-        <div class="card-desc">For schools learning about AI and exploring its potential through short-term innovation experiences.</div>
-        <div class="card-price"><span class="cur">$</span><span class="amt" style="font-size:32px">1,200</span><span class="per">/ campus</span></div>
-        <div class="card-note">$500 / event</div>
-        <a href="#" class="card-cta outline">Get Started</a>
-        <div class="card-divider"></div>
-        <div class="card-stitle">Builder Licenses</div>
-        <ul class="card-list"><li><span class="ck b">&#10003;</span>Targeted staff</li></ul>
-        <div class="card-stitle">User Licenses</div>
-        <ul class="card-list"><li><span class="ck b">&#10003;</span>Targeted students</li></ul>
-        <div class="card-stitle">Features</div>
-        <ul class="card-list">
-          <li><span class="ck b">&#10003;</span>Dedicated workspace for sharing</li>
-          <li class="off"><span class="ck x">&ndash;</span><span>SIS Integration</span></li>
-          <li class="off"><span class="ck x">&ndash;</span><span>Admin dashboard with advanced analytics</span></li>
-        </ul>
-        <div class="card-stitle">Included Services</div>
-        <ul class="card-list">
-          <li><span class="ck b">&#10003;</span>Virtual intro PD for staff</li>
-          <li class="off"><span class="ck x">&ndash;</span><span>Co-build AI apps (Targeted AI Adoption)</span></li>
-          <li class="off"><span class="ck x">&ndash;</span><span>Dedicated Learning Engineer Support</span></li>
-          <li class="off"><span class="ck x">&ndash;</span><span>Student training</span></li>
-          <li class="off"><span class="ck x">&ndash;</span><span>Culture of innovation</span></li>
-        </ul>
-      </div>
-
-      <!-- PILOTING -->
-      <div class="pricing-card featured">
-        <div class="card-badge">Most Popular</div>
-        <div class="card-icon c2">&#x1f9ea;</div>
-        <div class="card-label">Build &amp; Test AI Solutions</div>
-        <div class="card-name">Piloting</div>
-        <div class="card-desc">For schools actively integrating AI into instruction with a defined subset of educators and/or students.</div>
-        <div class="card-price"><span class="cur">$</span><span class="amt" style="font-size:32px">3,500</span><span class="per">/ campus</span></div>
-        <div class="card-note">&nbsp;</div>
-        <a href="#" class="card-cta primary">Start Piloting</a>
-        <div class="card-divider"></div>
-        <div class="card-stitle">Builder Licenses</div>
-        <ul class="card-list"><li><span class="ck c">&#10003;</span>All staff</li></ul>
-        <div class="card-stitle">User Licenses</div>
-        <ul class="card-list"><li><span class="ck c">&#10003;</span>Targeted students</li></ul>
-        <div class="card-stitle">Features</div>
-        <ul class="card-list">
-          <li><span class="ck c">&#10003;</span>Dedicated workspace for sharing</li>
-          <li><span class="ck c">&#10003;</span>SIS Integration</li>
-          <li><span class="ck c">&#10003;</span>Admin dashboard with advanced analytics</li>
-        </ul>
-        <div class="card-stitle">Included Services</div>
-        <ul class="card-list">
-          <li><span class="ck c">&#10003;</span>Virtual intro PD for staff</li>
-          <li><span class="ck c">&#10003;</span>Co-build AI apps (Targeted AI Adoption)</li>
-          <li class="off"><span class="ck x">&ndash;</span><span>Dedicated Learning Engineer Support</span></li>
-          <li class="off"><span class="ck x">&ndash;</span><span>Student training</span></li>
-          <li class="off"><span class="ck x">&ndash;</span><span>Culture of innovation</span></li>
-        </ul>
-      </div>
-
-      <!-- SCALING -->
-      <div class="pricing-card">
-        <div class="card-icon c2">&#x1f4c8;</div>
-        <div class="card-label">Scale AI Solutions</div>
-        <div class="card-name">Scaling</div>
-        <div class="card-desc">For schools ready to integrate AI tools across their schools.</div>
-        <div class="card-price"><span class="cur">$</span><span class="amt" style="font-size:32px">4</span><span class="per">/ student</span></div>
-        <div class="card-note">&nbsp;</div>
-        <a href="#" class="card-cta primary">Scale Now</a>
-        <div class="card-divider"></div>
-        <div class="card-stitle">Builder Licenses</div>
-        <ul class="card-list"><li><span class="ck c">&#10003;</span>All staff</li></ul>
-        <div class="card-stitle">User Licenses</div>
-        <ul class="card-list"><li><span class="ck c">&#10003;</span>All students</li></ul>
-        <div class="card-stitle">Features</div>
-        <ul class="card-list">
-          <li><span class="ck c">&#10003;</span>Dedicated workspace for sharing</li>
-          <li><span class="ck c">&#10003;</span>SIS Integration</li>
-          <li><span class="ck c">&#10003;</span>Admin dashboard with advanced analytics</li>
-        </ul>
-        <div class="card-stitle">Included Services</div>
-        <ul class="card-list">
-          <li><span class="ck c">&#10003;</span>Virtual intro PD for staff</li>
-          <li><span class="ck c">&#10003;</span>Co-build AI apps (Targeted AI Adoption)</li>
-          <li><span class="ck c">&#10003;</span>Dedicated Learning Engineer Support</li>
-          <li class="off"><span class="ck x">&ndash;</span><span>Student training</span></li>
-          <li class="off"><span class="ck x">&ndash;</span><span>Culture of innovation</span></li>
-        </ul>
-      </div>
-
-      <!-- TRANSFORMING -->
-      <div class="pricing-card">
-        <div class="card-icon c3">&#x1f680;</div>
-        <div class="card-label">Expand the Possibilities</div>
-        <div class="card-name">Transforming</div>
-        <div class="card-desc">For schools becoming AI native, creating innovative models for the future of learning.</div>
-        <div class="card-price"><span class="amt" style="font-size:28px">Custom quote</span></div>
-        <div class="card-note">&nbsp;</div>
-        <a href="#" class="card-cta dark">Contact Sales</a>
-        <div class="card-divider"></div>
-        <div class="card-stitle">Builder Licenses</div>
-        <ul class="card-list"><li><span class="ck p">&#10003;</span>All staff &amp; targeted students</li></ul>
-        <div class="card-stitle">User Licenses</div>
-        <ul class="card-list"><li><span class="ck p">&#10003;</span>All students</li></ul>
-        <div class="card-stitle">Features</div>
-        <ul class="card-list">
-          <li><span class="ck p">&#10003;</span>Dedicated workspace for sharing</li>
-          <li><span class="ck p">&#10003;</span>SIS Integration</li>
-          <li><span class="ck p">&#10003;</span>Admin dashboard with advanced analytics</li>
-        </ul>
-        <div class="card-stitle">Included Services</div>
-        <ul class="card-list">
-          <li><span class="ck p">&#10003;</span>Virtual intro PD for staff</li>
-          <li><span class="ck p">&#10003;</span>Co-build AI apps (Targeted AI Adoption)</li>
-          <li><span class="ck p">&#10003;</span>Dedicated Learning Engineer Support</li>
-          <li><span class="ck p">&#10003;</span>Student training</li>
-          <li><span class="ck p">&#10003;</span>Culture of innovation</li>
-        </ul>
-      </div>
-
-    </div>
-  </section>
 </div>
 
-<!-- ==================== ORGANIZATION PRICING ==================== -->
-<div id="org-pricing" class="hidden">
-  <section class="pricing-section">
-    <div class="org-grid">
+<!-- ═══════════ INDIVIDUAL TAB ═══════════ -->
+<div class="tab-content active" id="tab-individual">
 
-      <!-- FREE -->
-      <div class="pricing-card">
-        <div class="card-icon c1">&#x1f4bb;</div>
-        <div class="card-label">For individuals exploring AI</div>
-        <div class="card-name">Free</div>
-        <div class="card-desc">Start building AI apps with no commitment.</div>
-        <div class="card-price"><span class="cur">$</span><span class="amt">0</span></div>
-        <div class="card-note">&nbsp;</div>
-        <a href="#" class="card-cta outline">Get Started Free</a>
-        <div class="card-divider"></div>
-        <div class="card-stitle">What's Included</div>
-        <!-- placeholder row for includes-note alignment -->
-        <div></div>
-        <ul class="card-list">
-          <li><span class="ck b">&#10003;</span>Build unlimited AI apps; publish up to 5 at a time</li>
-          <li><span class="ck b">&#10003;</span>100 conversations per month</li>
-          <li><span class="ck b">&#10003;</span>1 workspace</li>
-          <li><span class="ck b">&#10003;</span>Community templates and examples</li>
-          <li><span class="ck b">&#10003;</span>Standard moderation and safety tools</li>
-        </ul>
+  <div class="cards" style="grid-template-columns: repeat(2, 1fr); max-width: 720px;">
+    <!-- Free -->
+    <div class="card">
+      <svg class="card-icon" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="2" y="12" width="26" height="26" rx="5" fill="#f43f5e"/>
+        <polygon points="34,4 48,20 34,36 20,20" fill="#0EA5E9"/>
+      </svg>
+      <h3>Free</h3>
+      <p class="description">Explore Playlab — build, test, and iterate on AI tools for your context.</p>
+      <div class="price">
+        <span class="amount">$0</span>
       </div>
-
-      <!-- PRO -->
-      <div class="pricing-card featured">
-        <div class="card-badge">Most Popular</div>
-        <div class="card-icon c2">&#x1f465;</div>
-        <div class="card-label">For teams building AI into their workflows</div>
-        <div class="card-name">Pro</div>
-        <div class="card-desc">Scale your team's AI capabilities with full platform access.</div>
-        <div class="card-price"><span class="cur">$</span><span class="amt">25</span><span class="per">/ user / month</span></div>
-        <div class="card-note">Billed annually &middot; $30/user/month billed monthly</div>
-        <a href="#" class="card-cta primary">Start Pro Plan</a>
-        <div class="card-divider"></div>
-        <div class="includes-note">Everything in Free, plus:</div>
-        <div class="card-stitle">Software</div>
-        <ul class="card-list">
-          <li><span class="ck c">&#10003;</span>Unlimited AI apps</li>
-          <li><span class="ck c">&#10003;</span>1,000 conversations per user per month</li>
-          <li><span class="ck c">&#10003;</span>Unlimited workspaces and collaborators</li>
-          <li><span class="ck c">&#10003;</span>Custom branding on apps</li>
-          <li><span class="ck c">&#10003;</span>Analytics dashboard</li>
-          <li><span class="ck c">&#10003;</span>Admin controls and user management</li>
-          <li><span class="ck c">&#10003;</span>Priority support</li>
-          <li><span class="ck c">&#10003;</span>Shareable app links with access controls</li>
-        </ul>
+      <a href="#" class="cta">Get Started</a>
+      <p class="features-label">Key features:</p>
+      <div class="feature">
+        <svg class="check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        Limited model access
       </div>
-
-      <!-- ENTERPRISE -->
-      <div class="pricing-card">
-        <div class="card-icon c3">&#x1f3e2;</div>
-        <div class="card-label">For organizations deploying AI at scale</div>
-        <div class="card-name">Enterprise</div>
-        <div class="card-desc">Full-scale deployment with dedicated support and compliance.</div>
-        <div class="card-price"><span class="amt" style="font-size:28px">Custom</span></div>
-        <div class="card-note">&nbsp;</div>
-        <a href="#" class="card-cta dark">Contact Sales</a>
-        <div class="card-divider"></div>
-        <div class="includes-note">Everything in Pro, plus:</div>
-        <div class="card-stitle">Enterprise Features</div>
-        <ul class="card-list">
-          <li><span class="ck p">&#10003;</span>Unlimited conversations</li>
-          <li><span class="ck p">&#10003;</span>SSO / SAML authentication</li>
-          <li><span class="ck p">&#10003;</span>API access and custom integrations</li>
-          <li><span class="ck p">&#10003;</span>Dedicated workspace environments</li>
-          <li><span class="ck p">&#10003;</span>Advanced analytics and audit logs</li>
-          <li><span class="ck p">&#10003;</span>Data residency and compliance options</li>
-          <li><span class="ck p">&#10003;</span>Custom moderation policies</li>
-          <li><span class="ck p">&#10003;</span>Dedicated account manager</li>
-          <li><span class="ck p">&#10003;</span>SLA with guaranteed uptime</li>
-          <li><span class="ck p">&#10003;</span>Onboarding and training services</li>
-        </ul>
+      <div class="feature">
+        <svg class="check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        Limited monthly AI usage
       </div>
-
-    </div>
-  </section>
-
-  <!-- PLAN COMPARISON TABLE -->
-  <section class="table-section">
-    <div class="table-header">
-      <h2>Compare plans</h2>
-      <p>All plans include safe, reliable AI infrastructure built by a nonprofit committed to making AI open and accessible.</p>
-    </div>
-    <table class="ptable">
-      <thead><tr><th>Feature</th><th>Free</th><th>Pro</th><th>Enterprise</th></tr></thead>
-      <tbody>
-        <tr><td><strong>Price</strong></td><td>$0</td><td><strong>$25/user/mo</strong></td><td>Custom</td></tr>
-        <tr><td><strong>AI Apps</strong></td><td>5 published</td><td>Unlimited</td><td>Unlimited</td></tr>
-        <tr><td><strong>Conversations</strong></td><td>100/mo total</td><td>1,000/user/mo</td><td>Unlimited</td></tr>
-        <tr><td><strong>Collaborators</strong></td><td>&mdash;</td><td>Unlimited</td><td>Unlimited</td></tr>
-        <tr><td><strong>Custom Branding</strong></td><td>&mdash;</td><td>&#10003;</td><td>&#10003;</td></tr>
-        <tr><td><strong>Analytics</strong></td><td>&mdash;</td><td>&#10003;</td><td>Advanced + Audit</td></tr>
-        <tr><td><strong>Admin Controls</strong></td><td>&mdash;</td><td>&#10003;</td><td>&#10003;</td></tr>
-        <tr><td><strong>SSO / SAML</strong></td><td>&mdash;</td><td>&mdash;</td><td>&#10003;</td></tr>
-        <tr><td><strong>API Access</strong></td><td>&mdash;</td><td>&mdash;</td><td>&#10003;</td></tr>
-        <tr><td><strong>Support</strong></td><td>Community</td><td>Priority</td><td>Dedicated</td></tr>
-      </tbody>
-    </table>
-  </section>
-
-  <!-- PRO EXAMPLE PRICING -->
-  <section class="table-section">
-    <div class="table-header">
-      <h2>Pro &mdash; example pricing by team size</h2>
-      <p>No surprise audits. No hidden fees. Just transparent partnership.</p>
-    </div>
-    <table class="ptable">
-      <thead><tr><th>Team Size</th><th>Monthly (annual billing)</th><th>Annual Total</th></tr></thead>
-      <tbody>
-        <tr><td><strong>5 users</strong></td><td>$125/mo</td><td><strong>$1,500</strong></td></tr>
-        <tr><td><strong>15 users</strong></td><td>$375/mo</td><td><strong>$4,500</strong></td></tr>
-        <tr><td><strong>50 users</strong></td><td>$1,250/mo</td><td><strong>$15,000</strong></td></tr>
-        <tr><td><strong>200 users</strong></td><td>$5,000/mo</td><td><strong>$60,000</strong></td></tr>
-      </tbody>
-    </table>
-  </section>
-
-  <!-- OUR APPROACH -->
-  <section class="services-section">
-    <div class="services-inner">
-      <div class="services-header">
-        <h2>Our approach</h2>
-        <p>Playlab is a tech nonprofit building public AI infrastructure. Our pricing reflects our commitment to making AI safe, reliable, open, and accessible &mdash; not to maximizing extraction.</p>
-        <p style="margin-top:14px;">Pro plans are based on projected usage. As your adoption grows, we'll work with you to scale responsibly. No surprise audits. No hidden fees. Just transparent partnership.</p>
+      <div class="feature">
+        <svg class="check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        Up to 10 student accounts
+      </div>
+      <div class="feature">
+        <svg class="check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        Intro workshop &amp; community resources
       </div>
     </div>
-  </section>
+
+    <!-- Pro -->
+    <div class="card">
+      <svg class="card-icon" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect width="24" height="24" rx="5" fill="#f43f5e"/>
+        <rect x="20" y="4" width="20" height="20" rx="5" fill="#f59e0b"/>
+        <circle cx="20" cy="36" r="10" fill="#0EA5E9"/>
+        <rect x="36" y="28" width="16" height="16" rx="4" fill="#10b981"/>
+      </svg>
+      <h3>Pro</h3>
+      <p class="description">For individuals building and sharing AI apps with their team or students.</p>
+      <div class="price">
+        <span class="amount">$150</span>
+        <span class="period">per year</span>
+      </div>
+      <a href="#" class="cta primary">Get Pro</a>
+      <p class="features-label">Everything in <strong>Free</strong>, plus:</p>
+      <div class="feature">
+        <svg class="check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        Unlimited model access
+      </div>
+      <div class="feature">
+        <svg class="check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        Up to 50 student accounts
+      </div>
+      <div class="feature">
+        <svg class="check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        Communal learning (PLCs, CoPs)
+      </div>
+      <div class="feature">
+        <svg class="check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        Public virtual learning curriculum
+      </div>
+    </div>
+  </div>
+
+  <!-- FAQs -->
+  <div class="faq-section">
+    <h2>FAQs</h2>
+    <details class="faq">
+      <summary>What's the difference between Free and Pro?</summary>
+      <div class="answer"><strong>Free</strong> lets you explore Playlab with basic model access and limited monthly AI usage. <strong>Pro</strong> unlocks unlimited model access, expanded sharing capabilities, and access to office hours and learning communities.</div>
+    </details>
+    <details class="faq">
+      <summary>When should I consider an organization plan instead?</summary>
+      <div class="answer">If you need to deploy AI tools across an entire school, district, or company — with admin dashboards, SIS integration, or dedicated support — check out our <strong>Schools</strong> or <strong>Business</strong> tabs for organization-level plans.</div>
+    </details>
+  </div>
 </div>
 
-<!-- ==================== SHARED SECTIONS ==================== -->
+<!-- ═══════════ SCHOOLS TAB ═══════════ -->
+<div class="tab-content" id="tab-schools">
 
-<section class="trust-section">
-  <h3>Trusted by schools and systems nationwide</h3>
-  <div class="trust-logos">
-    <span class="trust-logo">NYC Public Schools</span>
-    <span class="trust-logo">KIPP</span>
-    <span class="trust-logo">CA Community Colleges</span>
-    <span class="trust-logo">Cleveland MSD</span>
-    <span class="trust-logo">Tufts University</span>
-    <span class="trust-logo">CUNY</span>
-  </div>
-</section>
+  <div class="cards" style="grid-template-columns: repeat(3, 1fr); max-width: 1080px;">
+    <!-- Play -->
+    <div class="card">
+      <svg class="card-icon" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <polygon points="4,28 16,6 28,28" fill="#f43f5e"/>
+        <circle cx="36" cy="16" r="10" fill="#0EA5E9"/>
+        <polygon points="30,30 42,26 48,36 42,46 30,42" fill="#f59e0b"/>
+      </svg>
+      <h3>Play</h3>
+      <p class="description">For individual sites seeking to learn and explore AI in education.</p>
+      <div class="price">
+        <span class="amount">$1,500</span>
+        <span class="period">per campus / year</span>
+      </div>
+      <a href="#" class="cta">Get Started</a>
+      <p class="features-label">Key features:</p>
+      <div class="feature">
+        <svg class="check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        AI Learning for Educators
+      </div>
+      <div class="feature">
+        <svg class="check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        50 Pro accounts
+      </div>
+      <div class="feature">
+        <svg class="check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        Dedicated organization workspace
+      </div>
+      <div class="feature">
+        <svg class="check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        Public virtual learning curriculum &amp; office hours
+      </div>
+    </div>
 
-<section class="faq-section">
-  <div class="faq-header"><h2>Frequently asked questions</h2></div>
-  <div class="faq-item">
-    <div class="faq-question" onclick="toggleFaq(this)"><span>What AI models does Playlab support?</span><span class="arrow">&#9660;</span></div>
-    <div class="faq-answer"><p>Playlab gives you access to 8+ leading AI models including ChatGPT, Claude, Gemini, Llama, and more &mdash; all through a single, school-safe interface with enterprise-grade data privacy.</p></div>
-  </div>
-  <div class="faq-item">
-    <div class="faq-question" onclick="toggleFaq(this)"><span>How does pilot pricing work?</span><span class="arrow">&#9660;</span></div>
-    <div class="faq-answer"><p>Most partners start with a smaller pilot or cohort and receive 50&ndash;90% discounted pricing in Years 1&ndash;2 as adoption ramps. We work with you to design a rollout that fits your budget and timeline.</p></div>
-  </div>
-  <div class="faq-item">
-    <div class="faq-question" onclick="toggleFaq(this)"><span>Is Playlab safe for students?</span><span class="arrow">&#9660;</span></div>
-    <div class="faq-answer"><p>Yes. Playlab has been vetted by NYC Public Schools and California Community Colleges. We feature best-in-class AI safety with agentic moderation, content filtering, and full admin oversight.</p></div>
-  </div>
-  <div class="faq-item">
-    <div class="faq-question" onclick="toggleFaq(this)"><span>Can we integrate with our existing LMS?</span><span class="arrow">&#9660;</span></div>
-    <div class="faq-answer"><p>Absolutely. Scaling and Transforming plans include SSO/LMS integration, Clever rostering, and Canvas LMS integration. We support most major education platforms.</p></div>
-  </div>
-  <div class="faq-item">
-    <div class="faq-question" onclick="toggleFaq(this)"><span>What makes Playlab different from MagicSchool?</span><span class="arrow">&#9660;</span></div>
-    <div class="faq-answer"><p>Playlab is a nonprofit committed to open, accessible AI for education. We offer access to 8+ AI models (not just one), dedicated learning engineering support, and a platform designed for creating custom AI apps &mdash; not just using pre-built templates.</p></div>
-  </div>
-</section>
+    <!-- Pilot & Scale (Highlighted) -->
+    <div class="card highlighted">
+      <svg class="card-icon" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect width="24" height="24" rx="5" fill="#f43f5e"/>
+        <rect x="20" y="4" width="20" height="20" rx="5" fill="#f59e0b"/>
+        <circle cx="20" cy="36" r="10" fill="#0EA5E9"/>
+        <rect x="36" y="28" width="16" height="16" rx="4" fill="#10b981"/>
+      </svg>
+      <h3>Pilot &amp; Scale</h3>
+      <p class="description">For individual sites seeking to implement AI tools across classrooms.</p>
+      <div class="price">
+        <span class="amount">$5,000</span>
+        <span class="period">per campus / year</span>
+      </div>
+      <a href="#" class="cta primary">Get Started</a>
+      <p class="features-label">Everything in <strong>Play</strong>, plus:</p>
+      <div class="feature">
+        <svg class="check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        AI Learning for Students (optional)
+      </div>
+      <div class="feature">
+        <svg class="check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        Building &amp; Scaling AI Apps
+      </div>
+      <div class="feature">
+        <svg class="check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        50 Classroom Pro accounts with fully rostered students
+      </div>
+      <div class="feature">
+        <svg class="check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        SIS integration, admin dashboard &amp; custom PD
+      </div>
+    </div>
 
-<section class="cta-banner">
-  <h2>Ready to bring safe AI to your community?</h2>
-  <p>Join 104+ enterprise partners and 83,750 educators already building with Playlab.</p>
-  <div class="cta-buttons">
-    <a href="#" class="bp">Get Started Free</a>
-    <a href="#" class="bo">Talk to Sales</a>
+    <!-- Transform -->
+    <div class="card">
+      <svg class="card-icon" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M8 44V16l20-12 20 12v28" stroke="#f59e0b" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+        <rect x="14" y="24" width="10" height="20" rx="2" fill="#0EA5E9"/>
+        <rect x="32" y="24" width="10" height="20" rx="2" fill="#f43f5e"/>
+        <rect x="22" y="32" width="12" height="12" rx="2" fill="#10b981"/>
+      </svg>
+      <h3>Transform</h3>
+      <p class="description">System-wide adoption with dedicated support and unlimited accounts.</p>
+      <div class="price">
+        <span class="amount">$4</span>
+        <span class="period">per student / year</span>
+      </div>
+      <a href="#" class="cta">Contact us for pricing</a>
+      <p class="features-label">Everything in <strong>Pilot &amp; Scale</strong>, plus:</p>
+      <div class="feature">
+        <svg class="check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        AI Learning for Students (included)
+      </div>
+      <div class="feature">
+        <svg class="check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        Unlimited Pro &amp; Classroom Pro accounts
+      </div>
+      <div class="feature">
+        <svg class="check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        Dedicated Learning Engineer support
+      </div>
+      <div class="feature">
+        <svg class="check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        Fully rostered students with analytics
+      </div>
+    </div>
   </div>
-</section>
 
-<footer>
-  <span>&copy; 2026 Playlab. A 501(c)(3) nonprofit organization.</span>
-  <div><a href="#">Privacy</a> &middot; <a href="#">Terms</a> &middot; <a href="#">Contact</a></div>
-</footer>
+  <!-- Compare Plans -->
+  <div class="compare-section">
+    <h2>Compare plans</h2>
+    <table class="compare-table">
+      <thead>
+        <tr>
+          <th style="width:32%"></th>
+          <th>Play<span class="price-sub">$1,500/campus/yr</span></th>
+          <th>Pilot &amp; Scale<span class="price-sub">$5,000/campus/yr</span></th>
+          <th>Transform<span class="price-sub">$4/student/yr</span></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="category-row"><td colspan="4">Platform</td></tr>
+        <tr>
+          <td>Student accounts</td>
+          <td>Up to 10 per user</td>
+          <td>All students</td>
+          <td>All students</td>
+        </tr>
+        <tr>
+          <td>Pro accounts</td>
+          <td>50</td>
+          <td class="dash-cell">0</td>
+          <td>Unlimited</td>
+        </tr>
+        <tr>
+          <td>Classroom Pro accounts</td>
+          <td class="dash-cell">0</td>
+          <td>50</td>
+          <td>Unlimited</td>
+        </tr>
+
+        <tr class="category-row"><td colspan="4">What's Included</td></tr>
+        <tr>
+          <td>AI Learning for Educators</td>
+          <td class="check-cell"><svg class="svg-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></td>
+          <td class="check-cell"><svg class="svg-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></td>
+          <td class="check-cell"><svg class="svg-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></td>
+        </tr>
+        <tr>
+          <td>AI Learning for Students</td>
+          <td class="dash-cell"><span class="svg-dash">—</span></td>
+          <td>Optional</td>
+          <td class="check-cell"><svg class="svg-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></td>
+        </tr>
+        <tr>
+          <td>Building &amp; Scaling AI Apps</td>
+          <td class="dash-cell"><span class="svg-dash">—</span></td>
+          <td class="check-cell"><svg class="svg-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></td>
+          <td class="check-cell"><svg class="svg-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></td>
+        </tr>
+
+        <tr class="category-row"><td colspan="4">Features</td></tr>
+        <tr>
+          <td>Dedicated organization workspace</td>
+          <td class="check-cell"><svg class="svg-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></td>
+          <td class="check-cell"><svg class="svg-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></td>
+          <td class="check-cell"><svg class="svg-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></td>
+        </tr>
+        <tr>
+          <td>SIS integration</td>
+          <td class="dash-cell"><span class="svg-dash">—</span></td>
+          <td class="check-cell"><svg class="svg-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></td>
+          <td class="check-cell"><svg class="svg-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></td>
+        </tr>
+        <tr>
+          <td>Admin dashboard with advanced analytics</td>
+          <td class="dash-cell"><span class="svg-dash">—</span></td>
+          <td class="check-cell"><svg class="svg-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></td>
+          <td class="check-cell"><svg class="svg-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></td>
+        </tr>
+
+        <tr class="category-row"><td colspan="4">Included Services</td></tr>
+        <tr>
+          <td>Public virtual learning curriculum</td>
+          <td class="check-cell"><svg class="svg-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></td>
+          <td class="check-cell"><svg class="svg-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></td>
+          <td class="check-cell"><svg class="svg-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></td>
+        </tr>
+        <tr>
+          <td>Access to office hours</td>
+          <td class="check-cell"><svg class="svg-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></td>
+          <td class="check-cell"><svg class="svg-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></td>
+          <td class="check-cell"><svg class="svg-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></td>
+        </tr>
+        <tr>
+          <td>Custom virtual PD</td>
+          <td class="dash-cell"><span class="svg-dash">—</span></td>
+          <td class="check-cell"><svg class="svg-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></td>
+          <td class="check-cell"><svg class="svg-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></td>
+        </tr>
+        <tr>
+          <td>Dedicated Learning Engineer support</td>
+          <td class="dash-cell"><span class="svg-dash">—</span></td>
+          <td class="dash-cell"><span class="svg-dash">—</span></td>
+          <td class="check-cell"><svg class="svg-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></td>
+        </tr>
+      </tbody>
+    </table>
+    <p class="footnote">All tiers include soft caps on usage</p>
+  </div>
+
+  <!-- Tiered Pricing: Pilot & Scale -->
+  <div class="tiered-section">
+    <h3>Tiered Pricing for <em>Pilot &amp; Scale</em> Plans</h3>
+    <p>The tiers below reflect Playlab's commitment to making AI accessible to individual schools and organizations.</p>
+    <table class="tier-table">
+      <thead>
+        <tr>
+          <th>Tier</th>
+          <th>Enrollment</th>
+          <th>Site License</th>
+          <th>Monthly Credits</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Small</td><td>0–500</td><td>$2,000</td><td>500K Tokens</td></tr>
+        <tr><td>Medium</td><td>500–1,000</td><td>$3,500</td><td>750K Tokens</td></tr>
+        <tr><td>Large</td><td>1,000+</td><td>$5,000</td><td>1M Tokens</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Tiered Pricing: Transform (Enterprise) -->
+  <div class="tiered-section">
+    <h3>Tiered Pricing for <em>Transform</em> Plans</h3>
+    <p>The tiers below reflect Playlab's standard introductory software pricing at full enrollment. Most partners begin with a smaller pilot or cohort and receive 50–90% discounted pricing in Years 1–2 as adoption ramps. Transform plans start at $6,000.</p>
+    <table class="tier-table">
+      <thead>
+        <tr>
+          <th>Tier</th>
+          <th>Student Enrollment</th>
+          <th>Price / Student / Year</th>
+          <th>Monthly Credits</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Tier 1</td><td>1 – 9,999</td><td>$4.00</td><td>2M Tokens</td></tr>
+        <tr><td>Tier 2</td><td>10,000 – 24,999</td><td>$3.50</td><td>4M Tokens</td></tr>
+        <tr><td>Tier 3</td><td>25,000 – 49,999</td><td>$3.00</td><td>6M Tokens</td></tr>
+        <tr><td>Tier 4</td><td>50,000+</td><td>Custom</td><td>Custom</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Add-Ons -->
+  <div class="addons-section">
+    <h3>Add-Ons</h3>
+    <div class="addon-grid">
+
+      <div class="addon-card">
+        <div class="addon-card-header">
+          <div class="addon-plus"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+          <h4>Adult AI Agency (PD for Staff)</h4>
+        </div>
+        <ul>
+          <li>Custom Teacher Training (In-Person or Virtual)</li>
+          <li>Cohort Leadership (PLC / CoP)</li>
+        </ul>
+      </div>
+
+      <div class="addon-card">
+        <div class="addon-card-header">
+          <div class="addon-plus"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+          <h4>Student AI Agency</h4>
+        </div>
+        <ul>
+          <li>Custom Student Training (In-Person or Virtual)</li>
+          <li>Custom Curriculum Development or Integration</li>
+          <li>Student or Family Event Facilitation</li>
+        </ul>
+      </div>
+
+      <div class="addon-card">
+        <div class="addon-card-header">
+          <div class="addon-plus"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+          <h4>Transformation Process</h4>
+        </div>
+        <ul>
+          <li>Build internal capacity to identify AI-shaped problems, build apps, pilot, measure, iterate, and scale</li>
+          <li>Lab Schools</li>
+        </ul>
+      </div>
+
+      <div class="addon-card">
+        <div class="addon-card-header">
+          <div class="addon-plus"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+          <h4>Custom AI Solutions</h4>
+        </div>
+        <ul>
+          <li>Co-built apps</li>
+          <li>Playlab-built apps — year-long collaboration to build 2–5 custom applications</li>
+          <li>Knowledge Graph</li>
+        </ul>
+      </div>
+
+      <div class="addon-card">
+        <div class="addon-card-header">
+          <div class="addon-plus"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+          <h4>R&amp;D / Continued AI Innovation</h4>
+        </div>
+        <ul>
+          <li>Custom AI Design Fellowships</li>
+          <li>R&amp;D AI Sprints</li>
+          <li>Strategic Advising on AI Policy</li>
+          <li>AI Innovation Systems &amp; Culture Building</li>
+        </ul>
+      </div>
+
+      <div class="addon-card">
+        <div class="addon-card-header">
+          <div class="addon-plus"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+          <h4>Events</h4>
+        </div>
+        <ul>
+          <li>Student Hackathon — 1 month access for students</li>
+          <li>AI Design Day — 1 month access for staff</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- FAQs -->
+  <div class="faq-section">
+    <h2>FAQs</h2>
+    <details class="faq">
+      <summary>What's the difference between Play, Pilot &amp; Scale, and Transform?</summary>
+      <div class="answer"><strong>Play</strong> is for individual sites seeking to learn — educators get Pro accounts and access to learning resources. <strong>Pilot &amp; Scale</strong> is for sites ready to implement, with Classroom Pro accounts, SIS integration, and custom PD. <strong>Transform</strong> is for system-wide adoption with unlimited accounts, dedicated Learning Engineer support, and full analytics.</div>
+    </details>
+    <details class="faq">
+      <summary>How does student rostering work?</summary>
+      <div class="answer">On the <strong>Play</strong> plan, students can access apps anonymously (unlimited) or via up to 10 student accounts per user. On <strong>Pilot &amp; Scale</strong> and <strong>Transform</strong> plans, students are fully rostered through your SIS integration, with full analytics on usage and engagement.</div>
+    </details>
+    <details class="faq">
+      <summary>Do most partners start at full pricing?</summary>
+      <div class="answer">No. Most partners begin with a smaller pilot or cohort and receive 50–90% discounted pricing in Years 1–2 as adoption ramps up. Transform plans start at $6,000 regardless of enrollment tier.</div>
+    </details>
+    <details class="faq">
+      <summary>What are Add-Ons?</summary>
+      <div class="answer">Add-Ons are additional services that can be layered on top of any Education plan. They include professional development for staff, student AI training, custom curriculum development, custom-built AI applications, and innovation programs like design fellowships and hackathons.</div>
+    </details>
+  </div>
+</div>
+
+<!-- ═══════════ BUSINESS TAB ═══════════ -->
+<div class="tab-content" id="tab-business">
+
+  <div class="cards" style="grid-template-columns: repeat(2, 1fr); max-width: 720px;">
+    <!-- Team (Highlighted) -->
+    <div class="card highlighted">
+      <svg class="card-icon" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="16" cy="16" r="10" fill="#0EA5E9"/>
+        <circle cx="40" cy="16" r="10" fill="#f43f5e"/>
+        <circle cx="28" cy="38" r="10" fill="#10b981"/>
+        <circle cx="28" cy="22" r="6" fill="#f59e0b"/>
+      </svg>
+      <h3>Team</h3>
+      <p class="description">For teams building, deploying, and managing AI tools across your organization.</p>
+      <div class="price">
+        <span class="amount">$25</span>
+        <span class="period">per user / month</span>
+      </div>
+      <a href="#" class="cta primary">Get Team</a>
+      <p class="features-label">Everything in <strong>Pro</strong>, plus:</p>
+      <div class="feature">
+        <svg class="check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        Admin dashboard with advanced analytics
+      </div>
+      <div class="feature">
+        <svg class="check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        Access to office hours
+      </div>
+      <div class="feature">
+        <svg class="check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        Custom virtual PD
+      </div>
+    </div>
+
+    <!-- Enterprise -->
+    <div class="card">
+      <svg class="card-icon" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M8 44V16l20-12 20 12v28" stroke="#f59e0b" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+        <rect x="14" y="24" width="10" height="20" rx="2" fill="#0EA5E9"/>
+        <rect x="32" y="24" width="10" height="20" rx="2" fill="#f43f5e"/>
+        <rect x="22" y="32" width="12" height="12" rx="2" fill="#10b981"/>
+      </svg>
+      <h3>Enterprise</h3>
+      <p class="description">Custom solutions with dedicated support for large organizations.</p>
+      <div class="price">
+        <span class="amount" style="font-size: 28px;">Custom</span>
+      </div>
+      <a href="#" class="cta">Contact us for pricing</a>
+      <p class="features-label">Everything in <strong>Team</strong>, plus:</p>
+      <div class="feature">
+        <svg class="check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        Dedicated Learning Engineer support
+      </div>
+      <div class="feature">
+        <svg class="check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        Custom integrations &amp; onboarding
+      </div>
+    </div>
+  </div>
+
+  <!-- Compare Plans -->
+  <div class="compare-section">
+    <h2>Compare plans</h2>
+    <table class="compare-table">
+      <thead>
+        <tr>
+          <th style="width:40%"></th>
+          <th>Team<span class="price-sub">$25/user/mo</span></th>
+          <th>Enterprise<span class="price-sub">Custom</span></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="category-row"><td colspan="3">Features</td></tr>
+        <tr>
+          <td>Dedicated organization workspace</td>
+          <td class="check-cell"><svg class="svg-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></td>
+          <td class="check-cell"><svg class="svg-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></td>
+        </tr>
+        <tr>
+          <td>Admin dashboard with advanced analytics</td>
+          <td class="check-cell"><svg class="svg-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></td>
+          <td class="check-cell"><svg class="svg-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></td>
+        </tr>
+
+        <tr class="category-row"><td colspan="3">Included Services</td></tr>
+        <tr>
+          <td>Public virtual learning curriculum</td>
+          <td class="check-cell"><svg class="svg-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></td>
+          <td class="check-cell"><svg class="svg-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></td>
+        </tr>
+        <tr>
+          <td>Access to office hours</td>
+          <td class="check-cell"><svg class="svg-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></td>
+          <td class="check-cell"><svg class="svg-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></td>
+        </tr>
+        <tr>
+          <td>Custom virtual PD</td>
+          <td class="check-cell"><svg class="svg-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></td>
+          <td class="check-cell"><svg class="svg-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></td>
+        </tr>
+        <tr>
+          <td>Dedicated Learning Engineer support</td>
+          <td class="dash-cell"><span class="svg-dash">—</span></td>
+          <td class="check-cell"><svg class="svg-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></td>
+        </tr>
+        <tr>
+          <td>Custom integrations &amp; onboarding</td>
+          <td class="dash-cell"><span class="svg-dash">—</span></td>
+          <td class="check-cell"><svg class="svg-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></td>
+        </tr>
+      </tbody>
+    </table>
+    <p class="footnote">All tiers include soft caps on usage</p>
+  </div>
+
+  <!-- FAQs -->
+  <div class="faq-section">
+    <h2>FAQs</h2>
+    <details class="faq">
+      <summary>What kinds of businesses use Playlab?</summary>
+      <div class="answer">Playlab works with organizations across sectors — from workforce development agencies to corporate L&amp;D teams — to build, deploy, and scale custom AI-powered learning and productivity tools.</div>
+    </details>
+    <details class="faq">
+      <summary>What's included in the Team plan?</summary>
+      <div class="answer">The Team plan includes everything in Pro plus an admin dashboard with advanced analytics, access to office hours, and custom virtual professional development. It's designed for organizations that need to manage multiple users building and deploying AI tools.</div>
+    </details>
+    <details class="faq">
+      <summary>When should I choose Enterprise over Team?</summary>
+      <div class="answer">Enterprise is ideal for large organizations that need dedicated Learning Engineer support, custom integrations, and tailored onboarding. If your team needs hands-on guidance scaling AI across departments, Enterprise is the right fit.</div>
+    </details>
+  </div>
+</div>
+
+<!-- ─── FOOTER NOTE ─── -->
+<p class="footnote">*All plans include soft caps on AI usage. Published apps in paid plans currently have unlimited usage — this may change in the future.</p>
 
 <script>
-let isOrg = false;
-function togglePricing() { isOrg = !isOrg; updateView(); }
-function setToggle(v) { isOrg = v; updateView(); }
-function updateView() {
-  const sw = document.getElementById('toggleSwitch');
-  const lE = document.getElementById('label-edu');
-  const lO = document.getElementById('label-org');
-  const sub = document.getElementById('toggleSubtitle');
-  const eP = document.getElementById('edu-pricing');
-  const oP = document.getElementById('org-pricing');
-  const hE = document.getElementById('hero-edu');
-  const hO = document.getElementById('hero-org');
-  const h1 = document.querySelector('.hero h1');
-  if (isOrg) {
-    sw.classList.add('active'); lE.classList.remove('active'); lO.classList.add('active');
-    sub.innerHTML = 'Showing <span class="hl">Organization</span> pricing';
-    eP.classList.add('hidden'); oP.classList.remove('hidden');
-    hE.classList.add('hidden'); hO.classList.remove('hidden');
-    h1.textContent = 'Organization Pricing';
-  } else {
-    sw.classList.remove('active'); lE.classList.add('active'); lO.classList.remove('active');
-    sub.innerHTML = 'Showing <span class="hl">Education</span> pricing';
-    eP.classList.remove('hidden'); oP.classList.add('hidden');
-    hE.classList.remove('hidden'); hO.classList.add('hidden');
-    h1.textContent = 'Education Pricing';
-  }
-}
-function toggleFaq(el) { el.parentElement.classList.toggle('open'); }
+  // Tab switching
+  document.querySelectorAll('.tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      // Deactivate all tabs and content
+      document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+      document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+
+      // Activate clicked tab and its content
+      tab.classList.add('active');
+      document.getElementById('tab-' + tab.dataset.tab).classList.add('active');
+    });
+  });
 </script>
+
 </body>
 </html>
